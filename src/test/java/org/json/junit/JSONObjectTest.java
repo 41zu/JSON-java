@@ -194,7 +194,6 @@ public class JSONObjectTest {
     public void jsonObjectByNullBean() {
         JSONObject jsonObject = new JSONObject((MyBean)null);
         assertNull("Expected an exception", jsonObject);
-        Util.checkJSONObjectMaps(jsonObject);
     }
     
     /**
