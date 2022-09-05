@@ -3,7 +3,6 @@ package org.json.junit.data;
 /**
  * An enum that contains getters and some internal fields
  */
-@SuppressWarnings("boxing")
 public enum MyEnumField {
     VAL1(1, "val 1"),
     VAL2(2, "val 2"),

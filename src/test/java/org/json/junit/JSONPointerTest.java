@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import org.json.JSONArray;
@@ -27,12 +28,15 @@ public class JSONPointerTest {
 
     
     static {
-        @SuppressWarnings("resource")
-        InputStream resourceAsStream = JSONPointerTest.class.getClassLoader().getResourceAsStream("jsonpointer-testdoc.json");
-        if(resourceAsStream == null) {
-            throw new ExceptionInInitializerError("Unable to locate test file. Please check your development environment configuration");
+    	String errorMsg = "Unable to locate test file. Please check your development environment configuration";
+        try (InputStream resourceAsStream = JSONPointerTest.class.getClassLoader().getResourceAsStream("jsonpointer-testdoc.json")) {
+            if(resourceAsStream == null) {
+                throw new ExceptionInInitializerError(errorMsg);
+            }
+            document = new JSONObject(new JSONTokener(resourceAsStream));
+        } catch (IOException e) {
+        	throw new ExceptionInInitializerError(errorMsg);
         }
-        document = new JSONObject(new JSONTokener(resourceAsStream));
     }
 
     private Object query(String pointer) {
@@ -44,7 +48,6 @@ public class JSONPointerTest {
         assertTrue(new JSONObject(EXPECTED_COMPLETE_DOCUMENT).similar(query("")));
     }
 
-    @SuppressWarnings("unused")
     @Test(expected = NullPointerException.class)
     public void nullPointer() {
         new JSONPointer((String) null);
@@ -139,7 +142,6 @@ public class JSONPointerTest {
         assertEquals(8, query("#/m~0n"));
     }
 
-    @SuppressWarnings("unused")
     @Test(expected = IllegalArgumentException.class)
     public void syntaxError() {
         new JSONPointer("key");

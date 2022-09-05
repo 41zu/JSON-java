@@ -53,7 +53,6 @@ public class WeirdList {
      *            index to get
      * @return the value at the index
      */
-    @SuppressWarnings("boxing")
     public int getInt(int i) {
         return this.list.get(i);
     }

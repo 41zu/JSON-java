@@ -589,7 +589,6 @@ public class JSONObjectTest {
      * JSONObject built from a bean. In this case all but one of the 
      * bean getters return valid JSON types
      */
-    @SuppressWarnings("boxing")
     @Test
     public void jsonObjectByBean1() {
         /**
@@ -759,7 +758,6 @@ public class JSONObjectTest {
     /**
      * Exercise the JSONObject.accumulate() method
      */
-    @SuppressWarnings("boxing")
     @Test
     public void jsonObjectAccumulate() {
 
@@ -792,7 +790,6 @@ public class JSONObjectTest {
     /**
      * Exercise the JSONObject append() functionality
      */
-    @SuppressWarnings("boxing")
     @Test
     public void jsonObjectAppend() {
         JSONObject jsonObject = new JSONObject();
@@ -824,7 +821,6 @@ public class JSONObjectTest {
     /**
      * Exercise the JSONObject doubleToString() method
      */
-    @SuppressWarnings("boxing")
     @Test
     public void jsonObjectDoubleToString() {
         String [] expectedStrs = {"1", "1", "-23.4", "-2.345E68", "null", "null" };
@@ -1253,7 +1249,6 @@ public class JSONObjectTest {
      * Document behaviors of big numbers. Includes both JSONObject
      * and JSONArray tests
      */
-    @SuppressWarnings("boxing")
     @Test
     public void bigNumberOperations() {
         /**
@@ -1598,7 +1593,6 @@ public class JSONObjectTest {
     /**
      * Exercise the JSONObject increment() method.
      */
-    @SuppressWarnings("cast")
     @Test
     public void jsonObjectIncrement() {
         String str = 
@@ -1719,7 +1713,6 @@ public class JSONObjectTest {
     /**
      * Exercise JSONObject numberToString() method
      */
-    @SuppressWarnings("boxing")
     @Test
     public void jsonObjectNumberToString() {
         String str;
@@ -1742,7 +1735,6 @@ public class JSONObjectTest {
     /**
      * Exercise JSONObject put() and similar() methods
      */
-    @SuppressWarnings("boxing")
     @Test
     public void jsonObjectPut() {
         String expectedStr = 
@@ -2031,7 +2023,6 @@ public class JSONObjectTest {
      * The following code was throwing a ClassCastException in the 
      * JSONObject(Map<String, Object>) constructor
      */
-    @SuppressWarnings("boxing")
     @Test
     public void valueToStringConfirmException() {
         Map<Integer, String> myMap = new HashMap<Integer, String>();
@@ -2158,7 +2149,6 @@ public class JSONObjectTest {
     /**
      * Explore how JSONObject handles parsing errors.
      */
-    @SuppressWarnings({"boxing", "unused"})
     @Test
     public void jsonObjectParsingErrors() {
         try {
@@ -3108,7 +3098,6 @@ public class JSONObjectTest {
     /**
      * test that validates a singleton can be serialized as a bean.
      */
-    @SuppressWarnings("boxing")
     @Test
     public void testSingletonBean() {
         final JSONObject jo = new JSONObject(Singleton.getInstance());
@@ -3135,7 +3124,6 @@ public class JSONObjectTest {
     /**
      * test that validates a singleton can be serialized as a bean.
      */
-    @SuppressWarnings("boxing")
     @Test
     public void testSingletonEnumBean() {
         final JSONObject jo = new JSONObject(SingletonEnum.getInstance());
@@ -3162,7 +3150,6 @@ public class JSONObjectTest {
     /**
      * Test to validate that a generic class can be serialized as a bean.
      */
-    @SuppressWarnings("boxing")
     @Test
     public void testGenericBean() {
         GenericBean<Integer> bean = new GenericBean<>(42);
@@ -3178,7 +3165,6 @@ public class JSONObjectTest {
     /**
      * Test to validate that a generic class can be serialized as a bean.
      */
-    @SuppressWarnings("boxing")
     @Test
     public void testGenericIntBean() {
         GenericBeanInt bean = new GenericBeanInt(42);
@@ -3196,7 +3182,6 @@ public class JSONObjectTest {
      */
     @Test
     public void testWierdListBean() {
-        @SuppressWarnings("boxing")
         WeirdList bean = new WeirdList(42, 43, 44);
         final JSONObject jo = new JSONObject(bean);
         // get() should have a key of 0 length

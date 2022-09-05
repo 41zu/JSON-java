@@ -350,7 +350,6 @@ public class JSONArrayTest {
      * Create a JSONArray doc with a variety of different elements.
      * Confirm that the values can be accessed via the get[type]() API methods
      */
-    @SuppressWarnings("boxing")
     @Test
     public void getArrayValues() {
         JSONArray jsonArray = new JSONArray(this.arrayStr);
@@ -518,7 +517,6 @@ public class JSONArrayTest {
      * Confirm that the values can be accessed via the opt[type](index)
      * and opt[type](index, default) API methods.
      */
-    @SuppressWarnings("boxing")
     @Test 
     public void opt() {
         JSONArray jsonArray = new JSONArray(this.arrayStr);
@@ -612,7 +610,6 @@ public class JSONArrayTest {
      * Exercise the JSONArray.put(value) method with various parameters
      * and confirm the resulting JSONArray.
      */
-    @SuppressWarnings("boxing")
     @Test
     public void put() {
         JSONArray jsonArray = new JSONArray();
@@ -690,7 +687,6 @@ public class JSONArrayTest {
      * Exercise the JSONArray.put(index, value) method with various parameters
      * and confirm the resulting JSONArray.
      */
-    @SuppressWarnings("boxing")
     @Test
     public void putIndex() {
         JSONArray jsonArray = new JSONArray();
@@ -952,7 +948,6 @@ public class JSONArrayTest {
     /**
      * Exercise the JSONArray iterator.
      */
-    @SuppressWarnings("boxing")
     @Test
     public void iteratorTest() {
         JSONArray jsonArray = new JSONArray(this.arrayStr);
@@ -1237,7 +1232,6 @@ public class JSONArrayTest {
      * Verifies that the object constructor can properly handle any supported collection object.
      */
     @Test
-    @SuppressWarnings({ "unchecked", "boxing" })
     public void testObjectConstructor() {
         // should copy the array
         Object o = new Object[] {2, "test2", true};
@@ -1247,10 +1241,12 @@ public class JSONArrayTest {
         
         // should NOT copy the collection
         // this is required for backwards compatibility
-        o = new ArrayList<Object>();
-        ((Collection<Object>)o).add(1);
-        ((Collection<Object>)o).add("test");
-        ((Collection<Object>)o).add(false);
+        ArrayList<Object> al = new ArrayList<>();
+        al.add(1);
+        al.add("test");
+        al.add(false);
+
+        o = al;
         try {
             JSONArray a0 = new JSONArray(o);
             assertNull("Should error", a0);

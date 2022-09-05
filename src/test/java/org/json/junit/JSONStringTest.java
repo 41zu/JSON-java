@@ -145,7 +145,6 @@ public class JSONStringTest {
      * This tests the JSONObject.valueToString() method. These should be
      * identical to the values above, except for the enclosing [ and ].
      */
-    @SuppressWarnings("boxing")
     @Test
     public void valuesToString() throws Exception {
 
