@@ -1942,7 +1942,7 @@ public class JSONObjectTest {
     @Test
     public void jsonObjectToStringSuppressWarningOnCastToMap() {
         JSONObject jsonObject = new JSONObject();
-        Map<String, String> map = new HashMap();
+        Map<String, String> map = new HashMap<>();
         map.put("abc", "def");
         jsonObject.put("key", map);
 
@@ -3166,7 +3166,7 @@ public class JSONObjectTest {
     @SuppressWarnings("boxing")
     @Test
     public void testGenericBean() {
-        GenericBean<Integer> bean = new GenericBean(42);
+        GenericBean<Integer> bean = new GenericBean<>(42);
         final JSONObject jo = new JSONObject(bean);
         assertEquals(jo.keySet().toString(), 8, jo.length());
         assertEquals(42, jo.get("genericValue"));
