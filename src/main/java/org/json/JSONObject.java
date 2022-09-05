@@ -109,7 +109,6 @@ public class JSONObject {
          *         null.
          */
         @Override
-        @SuppressWarnings("lgtm[java/unchecked-cast-in-equals]")
         public boolean equals(Object object) {
             return object == null || object == this;
         }

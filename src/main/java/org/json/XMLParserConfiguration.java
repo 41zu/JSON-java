@@ -14,7 +14,6 @@ import java.util.Set;
  * Configuration object for the XML parser. The configuration is immutable.
  * @author AylwardJ
  */
-@SuppressWarnings({""})
 public class XMLParserConfiguration {
     /** Original Configuration of the XML Parser. */
     public static final XMLParserConfiguration ORIGINAL
